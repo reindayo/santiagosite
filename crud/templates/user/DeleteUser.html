@@ -1,0 +1,54 @@
+{% extends "layout/base.html" %}
+{% block title %}Delete User{% endblock %}
+{% block content %}
+
+<div class="max-w-md mx-auto">
+    <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-8 text-center">
+
+        {% if user.profile_pic %}
+            <img src="{{ user.profile_pic.url }}"
+                 class="w-24 h-24 rounded-full object-cover border-4 border-red-100 mx-auto mb-4">
+        {% else %}
+            <div class="w-24 h-24 rounded-full bg-red-100 border-4 border-red-200
+                        flex items-center justify-center mx-auto mb-4">
+                <span class="text-3xl font-bold text-red-400">
+                    {{ user.first_name|first|upper }}
+                </span>
+            </div>
+        {% endif %}
+
+        <h1 class="text-xl font-bold text-gray-800 mb-1">Delete User</h1>
+        <p class="text-gray-500 text-sm mb-1">You are about to delete:</p>
+        <p class="text-lg font-semibold text-gray-900">
+            {{ user.first_name }} {{ user.last_name }}
+        </p>
+        <p class="text-sm text-gray-500 mb-2">{{ user.email }}</p>
+        <p class="text-xs text-gray-400 mb-6">
+            Gender: {{ user.gender.name|default:"Not set" }}
+        </p>
+
+        <div class="p-3 bg-red-50 border border-red-200 rounded-lg mb-6">
+            <p class="text-xs text-red-600 font-medium">
+                ⚠ This will permanently delete this user and their profile picture.
+            </p>
+        </div>
+
+        <form method="POST">
+            {% csrf_token %}
+            <div class="flex justify-center gap-3">
+                <button type="submit"
+                    class="px-6 py-2 bg-red-600 text-white text-sm font-medium
+                           rounded-lg hover:bg-red-700 transition-colors">
+                    Yes, Delete
+                </button>
+                <a href="{% url 'UsersList' %}"
+                   class="px-6 py-2 bg-gray-100 text-gray-700 text-sm font-medium
+                          rounded-lg hover:bg-gray-200 transition-colors">
+                    Cancel
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
