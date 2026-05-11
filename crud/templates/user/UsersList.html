@@ -1,5 +1,7 @@
 {% extends "layout/base.html" %}
+
 {% block title %}Users — SantiagoSite{% endblock %}
+
 {% block content %}
 
 <div class="flex items-center justify-between mb-6">
@@ -11,7 +13,8 @@
     </a>
 </div>
 
-<!-- Search -->
+{% comment %} search {% endcomment %}
+
 <form method="GET" class="mb-5">
     <div class="relative max-w-xs">
         <svg class="absolute left-3 top-2.5 w-4 h-4 text-gray-400"
@@ -77,7 +80,8 @@
     </table>
 </div>
 
-<!-- Pagination -->
+{% comment %} pagination {% endcomment %}
+
 {% if users.has_other_pages %}
 <div class="flex justify-center items-center gap-1 mt-6">
     {% if users.has_previous %}

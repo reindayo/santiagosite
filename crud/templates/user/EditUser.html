@@ -67,7 +67,10 @@
                 </div>
             </div>
 
-            <!-- Profile Picture -->
+
+{% comment %} profile_pic> {% endcomment %}
+
+
 <div class="mb-6">
     <label class="block mb-1.5 text-sm font-medium text-gray-700">
         Profile Picture
@@ -89,7 +92,11 @@
                 </svg>
             {% endif %}
         </div>
-        <!-- File input below preview -->
+
+
+        {% comment %} file input {% endcomment %}
+        
+        
         <div class="w-full">
             {{ form.profile_pic }}
             {% if user.profile_pic %}
